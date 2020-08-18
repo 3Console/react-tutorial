@@ -5,7 +5,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <h1>React Firebase Tutorial</h1>
+        <h1>React Tutorial</h1>
       </div>
     </BrowserRouter>
   );
