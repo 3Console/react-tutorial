@@ -6,12 +6,16 @@ export const signIn = (credentials) => {
       credentials.email,
       credentials.password
     ).then(() => {
-      dispatch({ type: 'LOGIN_SUCCESS' })
+      const currentUser = firebase.auth().currentUser;
+      return currentUser.getIdTokenResult().then((idTokenResult) => {
+        dispatch({ type: 'LOGIN_SUCCESS', idTokenResult })
+      })
     }).catch((err) => {
       dispatch({ type: 'LOGIN_ERROR', err })
     })
   }
 }
+//dispatch({ type: 'LOGIN_SUCCESS' })
 
 export const signOut = () => {
   return (dispatch, getState, { getFirebase }) => {
